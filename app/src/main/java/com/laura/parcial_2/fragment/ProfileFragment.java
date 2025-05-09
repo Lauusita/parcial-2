@@ -31,18 +31,17 @@ public class ProfileFragment extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-    CircleImageView img_details;
-    TextView txt_namedetails, txt_speciesdetails, txt_statusdetails, txt_genre, txt_location;
+    TextView txt_username;
     Button btn_close;
-
     public ProfileFragment() {
         // Required empty public constructor
     }
 
 
-    public static ProfileFragment newInstance(String param1, String param2) {
+    public static ProfileFragment newInstance() {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,14 +56,12 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
+        txt_username = view.findViewById(R.id.txt_username);
         btn_close = view.findViewById(R.id.btn_close);
-        txt_genre = view.findViewById(R.id.txt_genre);
-        txt_location = view.findViewById(R.id.txt_location);
-        txt_namedetails = view.findViewById(R.id.txt_namedetails);
-        txt_speciesdetails = view.findViewById(R.id.txt_speciesdetails);
-        txt_statusdetails = view.findViewById(R.id.txt_statusdetails);
 
+        String usuario = view.getContext().getSharedPreferences(dataUserCache, privateMode).getString("user", "0");
 
+        txt_username.setText(usuario);
 
         sharedPreferences = view.getContext().getSharedPreferences(dataUserCache, privateMode);
         editor = sharedPreferences.edit();

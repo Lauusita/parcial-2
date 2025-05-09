@@ -85,13 +85,8 @@ public class UsuarioAdaptador extends RecyclerView.Adapter<UsuarioAdaptador.View
             btn_details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Fragment newFragment = new ProfileFragment();
-
-                    fragment.getParentFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragment_container, newFragment)
-                            .addToBackStack(null)
-                            .commit();
+                    Intent i = new Intent(v.getContext(), Detalle.class);
+                    v.getContext().startActivity(i);
                 }
             });
         }
